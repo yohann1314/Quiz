@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">Quiz</string>
+    <string name="start_button">Commencer le quiz !</string>
+    <string name="level">Choisissez votre niveau</string>
+    <string name="easy">Facile</string>
+    <string name="medium">Moyen</string>
+    <string name="hard">Difficile</string>
+    <string name="next_button">Suivant</string>
+    <string name="bravo">Bravo !</string>
+    <string name="score">Score</string>
+
+    <string name="question_1">A quelle marque appartient ce logo ?</string>
+    <string name="question_2">Choisissez parmis ces logos celui de </string>
+    <string name="question_3"></string>
+    <string name="question_4"></string>
+    <string name="question_5"></string>
+    <string name="question_6"></string>
+    <string name="question_7"></string>
+    <string name="question_8"></string>
+    <string name="question_9"></string>
+    <string name="question_10"></string>
+
 </resources>
