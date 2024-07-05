@@ -18,22 +18,27 @@
             android:layout_height="60dp"
             android:layout_marginBottom="16dp"
             android:gravity="center"
-            android:text="Choisissez un thème"
+            android:text="@string/level"
             android:textSize="24sp" />
 
         <Button
             android:id="@+id/quizTheme1Button"
             android:layout_width="match_parent"
             android:layout_height="116dp"
-            android:text="Niveau 1" />
+            android:text="@string/easy" />
 
         <Button
             android:id="@+id/quizTheme2Button"
             android:layout_width="match_parent"
             android:layout_height="118dp"
-            android:text="Niveau 2" />
+            android:text="@string/medium" />
 
-        <!-- Ajoutez autant de boutons que nécessaire pour chaque thème de quiz -->
+        <Button
+            android:id="@+id/quizTheme2Button"
+            android:layout_width="match_parent"
+            android:layout_height="118dp"
+            android:text="@string/hard" />
+
 
     </LinearLayout>
 
