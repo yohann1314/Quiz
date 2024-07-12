@@ -9,15 +9,20 @@
     <string name="bravo">Bravo !</string>
     <string name="score">Score</string>
 
-    <string name="question_1"></string>
-    <string name="question_2"></string>
-    <string name="question_3"></string>
-    <string name="question_4"></string>
-    <string name="question_5"></string>
-    <string name="question_6"></string>
-    <string name="question_7"></string>
-    <string name="question_8"></string>
-    <string name="question_9"></string>
-    <string name="question_10"></string>
+    <string name="welcome">Bienvenue</string>
+    <string name="enter_name">Entrez votre nom</string>
+    <string name="start_quiz">Démarrer le quiz</string>
+    <string name="change_name">Changer le nom</string>
+    <string name="paques">Joyeuses Pâques</string>
+    <string name="end_game">Fin du jeu</string>
+    <string name="top_scores">Top Scores</string>
+    <string name="restart_quiz">Recommencez le Quiz</string>
+    <string name="home">Accueil</string>
+    <string name="score_text">Score: %1$d</string>
+    <string name="answer1">Netflix</string>
+    <string name="answer2">Apple</string>
+    <string name="answer3">Adidas</string>
+    <string name="answer4">Lacoste</string>
+    <string name="answer5">Youtube</string>
 
 </resources>
