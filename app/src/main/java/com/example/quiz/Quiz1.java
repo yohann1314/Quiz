@@ -1,5 +1,8 @@
 package com.example.quiz;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,8 +16,9 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Quiz1 extends AppCompatActivity {
 
     private ImageView logoImageView;
-
+    private int score = 0;
     private Button[] answerButtons = new Button[4];
+    private TextView scoreTextView;
     private TextView progressTextView;
     private TextView questionTextView;
     private int currentQuestionIndex = 0;
@@ -30,10 +34,10 @@ public class Quiz1 extends AppCompatActivity {
 
     private Question[] questions = {
             new Question("Question 1", new String[]{"Netflix", "Apple", "Adidas", "Youtube"}, 0),
-            new Question("Question 2", new String[]{"Netflix", "Apple", "Adidas", "PornHub"}, 1),
-            new Question("Question 3", new String[]{"Netflix", "Apple", "Adidas", "PornHub"}, 2),
-            new Question("Question 4", new String[]{"Netflix", "Apple", "Adidas", "PornHub"}, 2),
-            new Question("Question 5", new String[]{"Netflix", "Apple", "Adidas", "lacoste"}, 4)
+            new Question("Question 2", new String[]{"Netflix", "Apple", "Adidas", "Youtube"}, 1),
+            new Question("Question 3", new String[]{"Netflix", "Apple", "Adidas", "Youtube"}, 2),
+            new Question("Question 4", new String[]{"Netflix", "Apple", "Adidas", "Youtube"}, 4),
+            new Question("Question 5", new String[]{"Netflix", "Apple", "Adidas", "Lacoste"}, 3)
     };
 
     @Override
@@ -43,6 +47,7 @@ public class Quiz1 extends AppCompatActivity {
 
         logoImageView = findViewById(R.id.logoImageView);
         questionTextView = findViewById(R.id.questionTextView);
+        scoreTextView = findViewById(R.id.scoreTextView);
         answerButtons[0] = findViewById(R.id.answerButton1);
         answerButtons[1] = findViewById(R.id.answerButton2);
         answerButtons[2] = findViewById(R.id.answerButton3);
@@ -54,7 +59,6 @@ public class Quiz1 extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     checkAnswer(((Button) v).getText().toString());
-                    // Removed loadNextQuestion() from here
                 }
             });
         }
@@ -67,40 +71,63 @@ public class Quiz1 extends AppCompatActivity {
         String correctAnswer = currentQuestion.getAnswers()[currentQuestion.getCorrectAnswerIndex()];
         for (Button answerButton : answerButtons) {
             if (answerButton.getText().toString().equals(correctAnswer)) {
-                answerButton.setBackgroundColor(Color.GREEN); // Set correct answer button color to green
+                answerButton.setBackgroundColor(Color.GREEN);
+                if (selectedAnswer.equals(correctAnswer)) {
+                    score++;
+                    scoreTextView.setText("Score: " + score);
+                }
             } else if (answerButton.getText().toString().equals(selectedAnswer)) {
-                answerButton.setBackgroundColor(Color.RED); // Set selected incorrect answer button color to red
+                answerButton.setBackgroundColor(Color.RED);
             }
         }
 
-        // Delay before loading next question
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 loadNextQuestion();
             }
-        }, 2000); // 2000 milliseconds = 2 seconds delay
+        }, 1000);
     }
 
     private void loadNextQuestion() {
-        if (currentQuestionIndex < totalQuestions) {
+        if (currentQuestionIndex >= totalQuestions) {
+            saveScoreAndEndGame();
+        } else {
             logoImageView.setImageResource(logoImages[currentQuestionIndex]);
             Question question = questions[currentQuestionIndex];
             questionTextView.setText(question.getQuestion());
             String[] answers = question.getAnswers();
             for (int i = 0; i < answerButtons.length; i++) {
                 answerButtons[i].setText(answers[i]);
-                answerButtons[i].setTextColor(Color.BLACK); // Reset text color
-                answerButtons[i].setBackgroundColor(Color.LTGRAY); // Reset button background color to initial color
+                answerButtons[i].setTextColor(Color.BLACK);
+                answerButtons[i].setBackgroundColor(Color.LTGRAY);
             }
 
             progressTextView.setText("Question " + (currentQuestionIndex + 1) + "/" + totalQuestions);
             currentQuestionIndex++;
-        } else {
-            // End the quiz
         }
     }
+
+    private void saveScoreAndEndGame() {
+        SharedPreferences prefs = getSharedPreferences("QuizPrefs", Context.MODE_PRIVATE);
+        String playerName = prefs.getString("PlayerName", "Unknown");
+
+        SharedPreferences.Editor editor = prefs.edit();
+        int totalScores = prefs.getInt("totalScores", 0);
+
+        editor.putString("player_" + totalScores, playerName);
+        editor.putInt("score_" + totalScores, score);
+        editor.putInt("totalScores", totalScores + 1);
+        editor.apply();
+
+        Intent intent = new Intent(Quiz1.this, EndGameActivity.class);
+        intent.putExtra("finalScore", score);
+        startActivity(intent);
+        finish();
+    }
 }
+
+
 
 class Question {
     private String question;
