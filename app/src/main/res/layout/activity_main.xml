@@ -11,37 +11,42 @@
         android:id="@+id/welcomeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bienvenue"
-        android:textSize="24sp"
-        android:textAlignment="center"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="sans-serif-black"
         android:gravity="center"
         android:padding="16dp"
-        android:layout_gravity="center_horizontal"/>
+        android:text="Bienvenue"
+        android:textAlignment="center"
+        android:textSize="24sp" />
 
     <EditText
         android:id="@+id/nameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-black"
         android:hint="Entrez votre nom"
-        android:padding="16dp"
-        android:layout_marginTop="16dp"/>
+        android:padding="16dp" />
 
     <Button
         android:id="@+id/startQuizButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Démarrer le quiz"
-        android:padding="16dp"
+        android:layout_gravity="center"
         android:layout_marginTop="16dp"
-        android:layout_gravity="center"/>
+        android:background="@drawable/buttons"
+        android:fontFamily="sans-serif-black"
+        android:padding="16dp"
+        android:text="Démarrer le quiz" />
 
     <Button
         android:id="@+id/changeNameButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Changer le nom"
-        android:padding="16dp"
+        android:layout_gravity="center"
         android:layout_marginTop="16dp"
-        android:layout_gravity="center"/>
+        android:fontFamily="sans-serif-black"
+        android:padding="16dp"
+        android:text="Changer le nom" />
 
 </LinearLayout>

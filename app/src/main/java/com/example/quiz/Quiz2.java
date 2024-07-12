@@ -1,6 +1,9 @@
 package com.example.quiz;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -106,8 +109,26 @@ public class Quiz2 extends AppCompatActivity {
             progressTextView.setText("Question " + (currentQuestionIndex + 1) + "/" + totalQuestions);
             currentQuestionIndex++;
         } else {
-            // End the quiz
+            saveScoreAndEndGame();
         }
+    }
+
+    private void saveScoreAndEndGame() {
+        SharedPreferences prefs = getSharedPreferences("QuizPrefs", Context.MODE_PRIVATE);
+        String playerName = prefs.getString("PlayerName", "Unknown");
+
+        SharedPreferences.Editor editor = prefs.edit();
+        int totalScores = prefs.getInt("totalScores", 0);
+
+        editor.putString("player_" + totalScores, playerName);
+        editor.putInt("score_" + totalScores, score);
+        editor.putInt("totalScores", totalScores + 1);
+        editor.apply();
+
+        Intent intent = new Intent(Quiz2.this, EndGameActivity.class);
+        intent.putExtra("finalScore", score);
+        startActivity(intent);
+        finish();
     }
 }
 

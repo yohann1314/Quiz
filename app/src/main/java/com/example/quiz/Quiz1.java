@@ -36,7 +36,7 @@ public class Quiz1 extends AppCompatActivity {
             new Question("Question 1", new String[]{"Netflix", "Apple", "Adidas", "Youtube"}, 0),
             new Question("Question 2", new String[]{"Netflix", "Apple", "Adidas", "Youtube"}, 1),
             new Question("Question 3", new String[]{"Netflix", "Apple", "Adidas", "Youtube"}, 2),
-            new Question("Question 4", new String[]{"Netflix", "Apple", "Adidas", "Youtube"}, 4),
+            new Question("Question 4", new String[]{"Netflix", "Apple", "Adidas", "Youtube"}, 3),
             new Question("Question 5", new String[]{"Netflix", "Apple", "Adidas", "Lacoste"}, 3)
     };
 
