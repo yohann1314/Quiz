@@ -9,8 +9,8 @@
     <string name="bravo">Bravo !</string>
     <string name="score">Score</string>
 
-    <string name="question_1">A quelle marque appartient ce logo ?</string>
-    <string name="question_2">Choisissez parmis ces logos celui de </string>
+    <string name="question_1"></string>
+    <string name="question_2"></string>
     <string name="question_3"></string>
     <string name="question_4"></string>
     <string name="question_5"></string>
