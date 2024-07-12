@@ -34,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
         } else {
             nameEditText.setVisibility(View.VISIBLE);
         }
+        if (playerName.equals("easter")) {
+            welcomeTextView.setText("Joyeuses Pâques !");
+        }
 
         startQuizButton.setOnClickListener(new View.OnClickListener() {
             @Override
